@@ -1,17 +1,19 @@
 {% extends "layout/centered.html" %}
 
-{% block content %}
-    <h3>Logging out...</h3>
-	<p>Please wait another <span id="seconds-left">3</span> second(s).</p>
+{% block form_title %}Logging out...{% endblock %}
+{% block form_content %}
+    <p>Please wait another <span id="seconds-left">3</span> second(s).</p>
 	<script>
-	$(document).ready(function() {
-		var span = $("#seconds-left");
-		var left = span.text();
-		setInterval(function() {
-			span.text(--left);
-			if (left == 0) {
-			    window.location.href="{% url "home-index" %}";
-			}
-		}, 1000);
-	});
+        $(document).ready(function() {
+            var span = $("#seconds-left");
+            var left = span.text();
+            setInterval(function() {
+                span.text(--left);
+                if (left == 0) {
+                    window.location.href="{% url "home-index" %}";
+                }
+            }, 1000);
+        });
+	</script>
 {% endblock %}
+{% block form_additional %}Haven't been redirected yet? <a href="{% url "home-index" %}">Go home</a>{% endblock %}

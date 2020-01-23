@@ -27,7 +27,7 @@ def login_view(request):
             return render(request, 'accounts/login.html', {'form': form})
 
         login(request, user)
-        return redirect('accounts-home', username=request.user.username)
+        return redirect('accounts-home')
     else:
         form = LoginForm()
         return render(request, 'accounts/login.html', {'form': form})

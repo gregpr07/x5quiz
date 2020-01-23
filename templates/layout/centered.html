@@ -2,6 +2,10 @@
 
 {% load static %}
 
+{% block additional_imports %}
+    <link rel="stylesheet" href="{% static "css/centered.css" %}">
+{% endblock %}
+
 {% block body %}
     <div class="centered align-center">
         <img src="{% static "img/logo.png" %}" alt="x5quiz logo">
@@ -11,7 +15,7 @@
                 <p class="card-text">{% block form_content %}{% endblock %}</p>
             </div>
         </div>
-        <div class="float-right">{% block form_additional %}{% endblock %}</div>
+        <div class="float-right additional">{% block form_additional %}{% endblock %}</div>
     </div>
     <style>
         body {
