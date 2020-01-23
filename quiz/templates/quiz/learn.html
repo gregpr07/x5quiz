@@ -1,5 +1,7 @@
 {% extends "layout/default.html" %}
 
+{% load document_filters %}
+
 {% block content %}
     <div class="row">
         <div class="col-12 col-md-9">
@@ -19,12 +21,7 @@
                     <h5 class="card-title">Resource information</h5>
                     <div class="card-text">
                         Rating:
-                        {{ statistics.rating }}
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
-                        <span><i class="fas fa-star"></i></span>
+                        {{ statistics.rating|star_rating|safe }}
                         <br>
                         Views: {{ statistics.views }}
                         <br>
