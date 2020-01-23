@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from accounts.forms import LoginForm, SignupForm
-from accounts.models import Profile
+from accounts.models import Profile, ProfileStatistics
 from x5quiz.errors import already_authenticated, not_authenticated
 
 
@@ -62,6 +62,9 @@ def signup_view(request):
 
         profile = Profile.objects.create(user=user, avatar="images/user-fallback.png")
         profile.save()
+
+        statistics = ProfileStatistics.objects.create(user=user)
+        statistics.save()
 
         login(request, user)
 
