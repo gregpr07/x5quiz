@@ -1,5 +1,21 @@
 {% extends "layout/default.html" %}
 
 {% block content %}
-    Searching for {{ keyword }}
+    <div class="card">
+        <div class="card-body">
+            <div class="card-text">
+                <h2 class="card-title">Searching for '{{ keyword }}'</h2>
+                <p>Results:</p>
+                {% if results.count == 0 %}
+                    Ouch, no documents found.
+                {% else %}
+                    <ol>
+                        {% for result in results %}
+                            <li>{{ result }}</li>
+                        {% endfor %}
+                    </ol>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 {% endblock %}
