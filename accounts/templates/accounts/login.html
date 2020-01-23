@@ -1,5 +1,15 @@
-{% extends "form_base.html" %}
+{% extends "layout/centered.html" %}
+
+{% load crispy_forms_tags %}
+
+{% block subtitle %}Login{% endblock %}
 
 {% block content %}
-
+    <form action="{% url 'accounts-login' %}" method="post" novalidate>
+		{% csrf_token %}
+    	{{ form|crispy }}
+		<div class="center">
+			<button class="btn btn-primary" type="submit">Login</button>
+		</div>
+	</form>
 {% endblock %}
