@@ -11,11 +11,12 @@
                     <div class="card-text">
                         {{ document.description }}
                         <hr>
-                        <button type="submit" class="btn btn-primary">Play Quiz</button>
+                        <p>Read the document at: <a href="{{ url }}">Open the document</a></p>
+                        <hr>
+                        <a href="{% url "quiz-quiz" document_id=document.material_id %}" class="btn btn-primary">Play Quiz</a>
                     </div>
                 </div>
             </div>
-            {{ content }}
         </div>
         <div class="col-12 col-md-3">
             <div class="card">

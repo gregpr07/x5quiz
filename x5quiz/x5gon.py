@@ -21,3 +21,11 @@ def get_document_content(document_id):
     query = BASE_URL + "oer_materials/" + document_id + "/contents"
     print("Running query: " + query)
     return json.loads(requests.get(query).content)["oer_contents"]
+
+
+def get_document_url(document_id):
+    return get_document(document_id)["url"]
+
+
+def generate_document_questions(document_id):
+    return "beep"

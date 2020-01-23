@@ -2,7 +2,8 @@ from django.shortcuts import render
 
 from quiz.models import DocumentStatistics
 from x5quiz.errors import search_failed
-from x5quiz.x5gon import search_documents, get_document, get_document_content
+from x5quiz.x5gon import search_documents, get_document, get_document_content, generate_document_questions, \
+    get_document_url
 
 
 def index_view(request):
@@ -33,12 +34,19 @@ def learn_view(request, document_id):
     return render(request, "quiz/learn.html", {
         'document': get_document(document_id),
         'content': get_document_content(document_id),
+        'url': get_document_url(document_id),
         'statistics': statistics,
     })
 
 
-def quiz_view(request):
-    return render(request, "quiz/quiz.html", {})
+def quiz_view(request, document_id):
+    questions = generate_document_questions(document_id)
+
+    return render(request, "quiz/quiz.html", {
+        'document': get_document(document_id),
+        'content': get_document_content(document_id),
+        'questions': questions,
+    })
 
 
 def results_view(request):
