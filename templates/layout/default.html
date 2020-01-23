@@ -1,10 +1,10 @@
 {% extends "base.html" %}
 
 {% block body %}
+    {% include "components/header.html" %}
     <div class="container">
-        {% include "components/header.html" %}
         {% block content %}
         {% endblock %}
-        {% include "components/footer.html" %}
     </div>
+    {% include "components/footer.html" %}
 {% endblock %}

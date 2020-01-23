@@ -2,28 +2,30 @@
 
 <header>
     <nav class="navbar navbar-expand-md navbar-dark bg-dark">
-        <a class="navbar-brand" href="#">
-            <img src="{% static "img/logo.png" %}" alt="x5quiz logo" height="20">
-        </a>
-        <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url "home-index" %}">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url "quiz-index" %}">Learn</a>
-                </li>
-            </ul>
-        </div>
-        <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url "accounts-login" %}"><i class="fas fa-user"></i> Login</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" href="{% url "accounts-signup" %}"><i class="fas fa-user-plus"></i> Sign up</a>
-                </li>
-            </ul>
+        <div class="container">
+            <a class="navbar-brand" href="{% url "home-index" %}">
+                <img src="{% static "img/logo.png" %}" alt="x5quiz logo" height="20">
+            </a>
+            <div class="navbar-collapse collapse w-100 order-1 order-md-0 dual-collapse2">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "home-index" %}">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "quiz-index" %}">Learn</a>
+                    </li>
+                </ul>
+            </div>
+            <div class="navbar-collapse collapse w-100 order-3 dual-collapse2">
+                <ul class="navbar-nav ml-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "accounts-login" %}"><i class="fas fa-user"></i> Login</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{% url "accounts-signup" %}"><i class="fas fa-user-plus"></i> Sign up</a>
+                    </li>
+                </ul>
+            </div>
         </div>
     </nav>
 </header>
