@@ -20,9 +20,8 @@
                         <div class="card-text">
                             {{ result.description|truncatewords:25 }}
                             <hr>
-                            <div>
-                                <button type="button" class="btn btn-primary">Learn</button>
-                                <button type="button" class="btn btn-warning">Quiz</button>
+                            <div class="align-center">
+                                <a href="{% url "quiz-learn" document_id=result.material_id %}">Learn</a>
                             </div>
                         </div>
                     </div>
