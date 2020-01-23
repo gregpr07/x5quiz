@@ -10,6 +10,8 @@
                     <h2 class="card-title">{{ document.title }}</h2>
                     <div class="card-text">
                         {{ document.description }}
+                        <hr>
+                        <button type="submit" class="btn btn-primary">Play Quiz</button>
                     </div>
                 </div>
             </div>
@@ -24,7 +26,7 @@
                         {{ statistics.rating|star_rating|safe }}
                         <br>
                         Views: {{ statistics.views }}
-                        <br>
+                        <hr>
                         Wiki references:
                         <ul>
                             {% for source in document.wikipedia %}

@@ -1,5 +1,7 @@
 {% extends "layout/default.html" %}
 
+{% load accounts_filters %}
+
 {% block content %}
     <div class="card">
         <div class="card-body">
@@ -18,7 +20,7 @@
                     <tr>
                       <th scope="row">{{ forloop.counter }}</th>
                       <td>{{ member.username }}</td>
-                      <td>xxx karma</td>
+                      <td>{{ member|fetch_karma }}</td>
                       <td><a href="{% url "accounts-profile" username=user.username %}">View profile</a></td>
                     </tr>
                 {% endfor %}
