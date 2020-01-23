@@ -83,6 +83,9 @@ def logout_view(request):
 
 
 def home_view(request):
+    if not request.user.is_authenticated:
+        return not_authenticated(request)
+
     return render(request, "accounts/home.html", {})
 
 
@@ -106,3 +109,9 @@ def members_view(request):
         'members': User.objects.all()
     })
 
+
+def settings_view(request):
+    if not request.user.is_authenticated:
+        return not_authenticated(request)
+
+    return render(request, "accounts/settings.html", {})

@@ -1,18 +1,32 @@
 {% extends "layout/default.html" %}
 
 {% block content %}
-    <div class="card">
-        <div class="card-body">
-            <h2 class="card-title">Learn</h2>
-            <div class="card-text">
-                <form action="{% url 'quiz-search' %}" method="post">
-                    {% csrf_token %}
-                    <div class="form-group">
-                        <label for="query">What would you like to learn today?</label>
-                        <input type="text" class="form-control" id="query" name="query" aria-describedby="queryHelp" placeholder="Keywords separated with comma (eg. java, object, oriented, programming).">
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Learn</h2>
+                    <div class="card-text">
+                        <form action="{% url 'quiz-search' %}" method="post">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <label for="query">What would you like to learn today?</label>
+                                <input type="text" class="form-control" id="query" name="query" aria-describedby="queryHelp" placeholder="Keywords separated with comma (eg. java, object, oriented, programming).">
+                            </div>
+                            <button type="submit" class="btn btn-primary">Search</button>
+                        </form>
                     </div>
-                    <button type="submit" class="btn btn-primary">Search</button>
-                </form>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Tips</h2>
+                    <div class="card-text">
+                        Use as many keywords as possible to get the most relevant learning material.
+                    </div>
+                </div>
             </div>
         </div>
     </div>
