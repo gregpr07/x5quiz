@@ -1,3 +1,13 @@
 * {
 
 }
+
+header {
+
+}
+
+footer {
+    padding: 18px;
+    background: #343A40;
+    color: white;
+}
