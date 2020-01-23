@@ -1,0 +1,23 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>x5quiz | {% block subtitle %}{% endblock %}</title>
+        <meta name="description" content="{% block description %}{% endblock %}"/>
+        <meta name="keywords" content="{% block keywords %}{% endblock %}"/>
+        <meta name="author" content="duplxey">
+        <link rel="shortcut icon" type="image/png" href="{% static "img/icon.png" %}"/>
+        {% include "imports.html" %}
+    </head>
+    <body>
+        <div class="container">
+            {% include "components/header.html" %}
+            {% block content %}
+            {% endblock %}
+            {% include "components/footer.html" %}
+        </div>
+    </body>
+</html>
