@@ -1,0 +1,40 @@
+{% extends "layout/default.html" %}
+
+{% block content %}
+    <div class="row">
+        <div class="col-12 col-md-9">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">{{ document.title }}</h2>
+                    <div class="card-text">
+                        {{ document.description }}
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Resource information</h5>
+                    <div class="card-text">
+                        Rating:
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <span><i class="fas fa-star"></i></span>
+                        <br>
+                        Reads: 1929
+                        <br>
+                        Wiki references:
+                        <ul>
+                            {% for source in document.wikipedia %}
+                                <li><a href="{{ source.uri }}">{{ source.name }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}

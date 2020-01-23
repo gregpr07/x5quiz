@@ -3,8 +3,8 @@ from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
 from accounts.forms import LoginForm, SignupForm
-from accounts.models import Profile
-from x5quiz.errors import already_authenticated, not_authenticated
+from accounts.models import Profile, ProfileStatistics
+from x5quiz.errors import already_authenticated, not_authenticated, unknown_user
 
 
 def login_view(request):
@@ -60,8 +60,11 @@ def signup_view(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
-        profile = Profile.objects.create(user=user, avatar="images/user.png")
+        profile = Profile.objects.create(user=user, avatar="images/user-fallback.png")
         profile.save()
+
+        statistics = ProfileStatistics.objects.create(user=user)
+        statistics.save()
 
         login(request, user)
 
@@ -81,3 +84,19 @@ def logout_view(request):
 
 def home_view(request):
     return render(request, "accounts/home.html", {})
+
+
+def profile_view(request, username):
+    if not User.objects.filter(username=username).exists():
+        return unknown_user(request)
+
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+    statistics = ProfileStatistics.objects.get(user=user)
+
+    return render(request, "accounts/profile.html", {
+        'user': user,
+        'profile': profile,
+        'statistics': statistics,
+    })
+

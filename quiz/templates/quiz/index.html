@@ -5,12 +5,13 @@
         <div class="card-body">
             <h2 class="card-title">Learn</h2>
             <div class="card-text">
-                <form>
+                <form action="{% url 'quiz-search' %}" method="post">
+                    {% csrf_token %}
                     <div class="form-group">
-                        <label for="categoryInput">What would you like to learn today?</label>
-                        <input type="text" class="form-control" id="categoryInput" aria-describedby="categoryHelp" placeholder="">
+                        <label for="query">What would you like to learn today?</label>
+                        <input type="text" class="form-control" id="query" name="query" aria-describedby="queryHelp" placeholder="Keywords separated with comma (eg. java, object, oriented, programming).">
                     </div>
-                    <button type="button" class="btn btn-primary">Search</button>
+                    <button type="submit" class="btn btn-primary">Search</button>
                 </form>
             </div>
         </div>
