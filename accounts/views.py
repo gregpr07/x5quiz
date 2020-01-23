@@ -100,3 +100,9 @@ def profile_view(request, username):
         'statistics': statistics,
     })
 
+
+def members_view(request):
+    return render(request, "accounts/members.html", {
+        'members': User.objects.all()
+    })
+
