@@ -4,7 +4,7 @@ from django.shortcuts import render, redirect
 
 from accounts.forms import LoginForm, SignupForm
 from accounts.models import Profile, ProfileStatistics
-from x5quiz.errors import already_authenticated, not_authenticated
+from x5quiz.errors import already_authenticated, not_authenticated, unknown_user
 
 
 def login_view(request):
@@ -87,5 +87,16 @@ def home_view(request):
 
 
 def profile_view(request, username):
-    return render(request, "accounts/profile.html", {})
+    if not User.objects.filter(username=username).exists():
+        return unknown_user(request)
+
+    user = User.objects.get(username=username)
+    profile = Profile.objects.get(user=user)
+    statistics = ProfileStatistics.objects.get(user=user)
+
+    return render(request, "accounts/profile.html", {
+        'user': user,
+        'profile': profile,
+        'statistics': statistics,
+    })
 

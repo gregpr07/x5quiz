@@ -16,3 +16,6 @@ class ProfileStatistics(models.Model):
     documents_read = models.IntegerField(default=0)
     documents_rated = models.IntegerField(default=0)
     quizzes_played = models.IntegerField(default=0)
+
+    def __str__(self):
+        return self.user.username + "'s statistics"
