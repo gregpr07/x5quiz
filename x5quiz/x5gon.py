@@ -15,3 +15,9 @@ def get_document(document_id):
     query = BASE_URL + "oer_materials/" + document_id
     print("Running query: " + query)
     return json.loads(requests.get(query).content)["oer_materials"]
+
+
+def get_document_content(document_id):
+    query = BASE_URL + "oer_materials/" + document_id + "/contents"
+    print("Running query: " + query)
+    return json.loads(requests.get(query).content)["oer_contents"]

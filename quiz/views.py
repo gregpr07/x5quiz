@@ -1,7 +1,7 @@
 from django.shortcuts import render
 
 from x5quiz.errors import search_failed
-from x5quiz.x5gon import search_documents, get_document
+from x5quiz.x5gon import search_documents, get_document, get_document_content
 
 
 def index_view(request):
@@ -21,4 +21,8 @@ def search_view(request):
 
 
 def learn_view(request, document_id):
-    return render(request, "quiz/learn.html", {'document': get_document(document_id)})
+    return render(request, "quiz/learn.html", {'document': get_document(document_id), 'content': get_document_content(document_id)})
+
+
+def quiz_view(request):
+    return render(request, "quiz/quiz.html", {})
