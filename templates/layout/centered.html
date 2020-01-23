@@ -1,10 +1,21 @@
-{% extends "layout/default.html" %}
+{% extends "base.html" %}
 
-{% block content %}
-    <div class="card">
-        <div class="card-body">
-            <h5 class="card-title"></h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+{% load static %}
+
+{% block body %}
+    <div class="centered align-center">
+        <img src="{% static "img/logo.png" %}" alt="x5quiz logo">
+        <div class="card">
+            <div class="card-body">
+                <h5 class="card-title">{% block form_title %}{% endblock %}</h5>
+                <p class="card-text">{% block form_content %}{% endblock %}</p>
+            </div>
         </div>
+        <div class="float-right">{% block form_additional %}{% endblock %}</div>
     </div>
+    <style>
+        body {
+            background: #343A40;
+        }
+    </style>
 {% endblock %}

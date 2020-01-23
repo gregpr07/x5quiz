@@ -4,7 +4,8 @@
 
 {% block subtitle %}Login{% endblock %}
 
-{% block content %}
+{% block form_title %}Login{% endblock %}
+{% block form_content %}
     <form action="{% url 'accounts-login' %}" method="post" novalidate>
 		{% csrf_token %}
     	{{ form|crispy }}
@@ -13,3 +14,4 @@
 		</div>
 	</form>
 {% endblock %}
+{% block form_additional %}Don't have an account yet? <a href="{% url "accounts-signup" %}">Sign up</a>{% endblock %}
