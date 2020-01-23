@@ -60,7 +60,7 @@ def signup_view(request):
         user = User.objects.create_user(username=username, email=email, password=password)
         user.save()
 
-        profile = Profile.objects.create(user=user, avatar="images/user.png")
+        profile = Profile.objects.create(user=user, avatar="images/user-fallback.png")
         profile.save()
 
         login(request, user)
@@ -81,3 +81,8 @@ def logout_view(request):
 
 def home_view(request):
     return render(request, "accounts/home.html", {})
+
+
+def profile_view(request, username):
+    return render(request, "accounts/profile.html", {})
+
