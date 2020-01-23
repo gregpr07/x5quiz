@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from quiz.models import DocumentStatistics
 from x5quiz.errors import search_failed
 from x5quiz.x5gon import search_documents, get_document, get_document_content
 
@@ -21,7 +22,19 @@ def search_view(request):
 
 
 def learn_view(request, document_id):
-    return render(request, "quiz/learn.html", {'document': get_document(document_id), 'content': get_document_content(document_id)})
+    statistics = None
+
+    if not DocumentStatistics.objects.filter(document_id=document_id).exists():
+        statistics = DocumentStatistics.objects.create(document_id=document_id, views=1)
+    else:
+        statistics = DocumentStatistics.objects.get(document_id=document_id)
+        statistics.increase_views()
+
+    return render(request, "quiz/learn.html", {
+        'document': get_document(document_id),
+        'content': get_document_content(document_id),
+        'statistics': statistics,
+    })
 
 
 def quiz_view(request):

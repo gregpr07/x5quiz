@@ -1,5 +1,5 @@
 from django.contrib import admin
 
-from quiz.models import ResourceStatistics
+from quiz.models import DocumentStatistics
 
-admin.site.register(ResourceStatistics)
+admin.site.register(DocumentStatistics)
