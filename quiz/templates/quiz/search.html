@@ -5,17 +5,29 @@
         <div class="card-body">
             <div class="card-text">
                 <h2 class="card-title">Searching for '{{ keyword }}'</h2>
-                <p>Results:</p>
-                {% if results.count == 0 %}
-                    Ouch, no documents found.
-                {% else %}
-                    <ol>
-                        {% for result in results %}
-                            <li>{{ result }}</li>
-                        {% endfor %}
-                    </ol>
-                {% endif %}
             </div>
         </div>
     </div>
+    {% if results.count == 0 %}
+        Ouch, no documents found.
+    {% else %}
+        <div class="row">
+            {% for result in results %}
+            <div class="col-12 col-md-6">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="card-title">{{ result.title }} (rel: {{ result.weight }})</div>
+                        <div class="card-text">
+                            {{ result.description|truncatewords:25 }}
+                            <hr>
+                            <div>
+                                <button type="button" class="btn btn-primary">Learn</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+        </div>
+    {% endif %}
 {% endblock %}
