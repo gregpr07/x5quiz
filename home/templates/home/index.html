@@ -3,35 +3,49 @@
 {% load static %}
 
 {% block content %}
-    <div class="section" style="background-color: #5D9EDE;color:white;">
+    <div class="section" style="background-color: #5D9EDE;color:white;background-image: url('{% static "img/bg1.png" %}');padding: 100px 0;">
         <div class="container">
             <div class="row">
                 <div class="col-12 col-md-6">
                     <h1>x5quiz</h1>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                    <h5>Wrapper around x5gon's search API, automatic quiz generator for x5gon materials with built-in statistics, leaderboards & more.</h5>
                 </div>
                 <div class="col-12 col-md-6"></div>
             </div>
         </div>
     </div>
+    <div class="section-small" style="background-color: #343A40;">
+        <div class="container">
+            <center>
+                <img src="{% static "img/iitp_logo.png" %}" alt="IITP logo" height="50" style="padding: 0 35px;">
+                <img src="{% static "img/x5gon_logo.png" %}" alt="x5gon logo" height="50" style="padding: 0 35px;">
+            </center>
+        </div>
+    </div>
     <div class="section">
         <center>
+            <h2 class="margin-bottom">How does it work?</h2>
             <div class="container">
                 <div class="row">
-                    <div class="col-12 col-md-4">
-                        <i class="fas fa-vial fa-3x"></i>
-                        <h2>Attribute #1</h2>
-                        <p>Description about attribute #1.</p>
+                    <div class="col-12 col-md-3">
+                        <i class="fas fa-search fa-3x"></i>
+                        <h2>1. Search</h2>
+                        <p>Use our wrapper around x5gon to search for things you'd like to learn.</p>
                     </div>
-                     <div class="col-12 col-md-4">
-                        <i class="fas fa-vial fa-3x"></i>
-                        <h2>Attribute #1</h2>
-                        <p>Description about attribute #1.</p>
+                     <div class="col-12 col-md-3">
+                        <i class="fas fa-book fa-3x"></i>
+                        <h2>2. Study</h2>
+                        <p>Study/read the documents.</p>
                     </div>
-                     <div class="col-12 col-md-4">
+                     <div class="col-12 col-md-3">
                         <i class="fas fa-vial fa-3x"></i>
-                        <h2>Attribute #1</h2>
-                        <p>Description about attribute #1.</p>
+                        <h2>3. Test</h2>
+                        <p>Start a quiz and test how much you've remembered.</p>
+                    </div>
+                     <div class="col-12 col-md-3">
+                        <i class="fas fa-signal fa-3x"></i>
+                        <h2>4. Compete</h2>
+                        <p>See how well other users answered the quiz and climb the leaderboard.</p>
                     </div>
                 </div>
             </div>
