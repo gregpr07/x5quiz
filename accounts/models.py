@@ -18,5 +18,9 @@ class ProfileStatistics(models.Model):
     quizzes_played = models.IntegerField(default=0)
     karma = models.IntegerField(default=0)
 
+    def add_karma(self, amount):
+        self.karma = self.karma + amount
+        self.save()
+
     def __str__(self):
         return self.user.username + "'s statistics"

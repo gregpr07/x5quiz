@@ -20,9 +20,7 @@
                         <div class="card-text">
                             {{ result.description|truncatewords:25 }}
                             <hr>
-                            <div class="align-center">
-                                <a href="{% url "quiz-learn" document_id=result.material_id %}">Learn</a>
-                            </div>
+                            <a href="{% url "quiz-learn" document_id=result.material_id %}" class="btn btn-primary">Learn</a>
                         </div>
                     </div>
                 </div>
