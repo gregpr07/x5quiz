@@ -6,6 +6,11 @@ header {
 
 }
 
+ol, ul {
+    margin: 0 10px; /* To remove default bottom margin */
+    padding: 0 10px; /* To remove default left padding */
+}
+
 footer {
     padding: 18px;
     background: #343A40;
