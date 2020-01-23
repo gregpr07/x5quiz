@@ -5,6 +5,6 @@ from accounts.models import ProfileStatistics
 register = template.Library()
 
 
-@register.filter(name='fetch_karma')
-def fetch_karma(user):
-    return ProfileStatistics.objects.get(user=user).karma
+@register.filter(name='fetch_points')
+def fetch_points(user):
+    return ProfileStatistics.objects.get(user=user).points

@@ -5,13 +5,13 @@
 {% block content %}
     <div class="card">
         <div class="card-body">
-            <h2 class="card-title">Top members [filtered by karma]</h2>
+            <h2 class="card-title">Top members <small>(filtered by: points)</small></h2>
             <table class="table table-stripped">
               <thead>
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Username</th>
-                  <th scope="col">Karma</th>
+                  <th scope="col">Points</th>
                   <th scope="col">View profile</th>
                 </tr>
               </thead>
@@ -20,7 +20,7 @@
                     <tr>
                       <th scope="row">{{ forloop.counter }}</th>
                       <td>{{ member.username }}</td>
-                      <td>{{ member|fetch_karma }}</td>
+                      <td>{{ member|fetch_points }}</td>
                       <td><a href="{% url "accounts-profile" username=user.username %}">View profile</a></td>
                     </tr>
                 {% endfor %}

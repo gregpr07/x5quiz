@@ -106,7 +106,7 @@ def profile_view(request, username):
 
 def members_view(request):
     return render(request, "accounts/members.html", {
-        'members': User.objects.all().order_by("profilestatistics__karma")
+        'members': User.objects.all().order_by("profilestatistics__points")
     })
 
 
