@@ -1,5 +1,59 @@
 {% extends "layout/default.html" %}
 
 {% block content %}
-    <p>This is the home.</p>
+    <div class="row">
+        <div class="col-12 col-md-8">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Welcome {{ user.username }}!</h2>
+                    <div class="card-text">
+                        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+                    </div>
+                </div>
+            </div>
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Your recent quizzes</h2>
+                    <div class="card-text">
+                        <table class="table table-striped">
+                          <thead>
+                            <tr>
+                              <th scope="col">#</th>
+                              <th scope="col">Title</th>
+                              <th scope="col">Correct</th>
+                              <th scope="col">Wrong</th>
+                              <th scope="col">Grade</th>
+                            </tr>
+                          </thead>
+                          <tbody>
+                            <tr>
+                              <th scope="row">%index%</th>
+                              <td >%title%</td>
+                              <td>%correct%</td>
+                              <td>%wrong%</td>
+                              <td>%grade%</td>
+                            </tr>
+                          </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-md-4">
+            <div class="card">
+                <div class="card-body">
+                    <h2 class="card-title">Recommendations</h2>
+                    <div class="card-text">
+                        Don't know what to learn next?
+                        <ul>
+                            <li><a href="#">Recommendation 1</a></li>
+                            <li><a href="#">Recommendation 2</a></li>
+                            <li><a href="#">Recommendation 3</a></li>
+                            <li><a href="#">Recommendation 4</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 {% endblock %}
