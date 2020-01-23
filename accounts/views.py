@@ -2,7 +2,7 @@ from django.contrib.auth import authenticate, login, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, redirect
 
-from accounts.forms import LoginForm, SignupForm
+from accounts.forms import LoginForm, SignupForm, SettingsForm
 from accounts.models import Profile, ProfileStatistics
 from x5quiz.errors import already_authenticated, not_authenticated, unknown_user
 
@@ -114,4 +114,30 @@ def settings_view(request):
     if not request.user.is_authenticated:
         return not_authenticated(request)
 
-    return render(request, "accounts/settings.html", {})
+    user = request.user
+    profile = Profile.objects.get(user=user)
+
+    if request.method == 'POST':
+        form = SettingsForm(request.POST, request.FILES)
+        if form.is_valid():
+            description = form.data.get('description', None)
+            avatar = request.FILES.get('avatar', None)
+
+            if description is not None:
+                if description is not profile.description:
+                    profile.description = description
+
+            if avatar is not None:
+                if avatar.size > 2097152:
+                    form.add_error('avatar', "Image is too big! Max 2MB.")
+                    return render(request, 'accounts/settings.html', {'form': form})
+
+                if avatar is not profile.avatar:
+                    profile.avatar = avatar
+
+            profile.save()
+        return redirect('accounts-profile', username=user.username)
+    else:
+        form = SettingsForm(initial={'description': profile.description, 'avatar': profile.avatar})
+        return render(request, 'accounts/settings.html', {'form': form})
+

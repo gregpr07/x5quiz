@@ -12,6 +12,7 @@
         <link rel="shortcut icon" type="image/png" href="{% static "img/icon.png" %}"/>
         {% include "imports.html" %}
         {% block additional_imports %}{% endblock %}
+        {{ form.media }}
     </head>
     <body>
         {% block body %}{% endblock %}

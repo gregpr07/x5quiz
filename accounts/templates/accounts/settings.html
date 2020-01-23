@@ -1,5 +1,17 @@
 {% extends "layout/default.html" %}
 
-{% block content %}
+{% load crispy_forms_filters %}
 
+{% block content %}
+    <div class="card">
+        <div class="card-body">
+            <h3>Settings</h3>
+            <hr>
+            <form action="{% url 'accounts-settings' %}" method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                {{ form|crispy }}
+                <button class="btn btn-primary" type="submit">Save</button>
+            </form>
+        </div>
+    </div>
 {% endblock %}
