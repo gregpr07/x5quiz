@@ -26,3 +26,7 @@ def learn_view(request, document_id):
 
 def quiz_view(request):
     return render(request, "quiz/quiz.html", {})
+
+
+def results_view(request):
+    return render(request, "quiz/results.html", {})
