@@ -1,6 +1,6 @@
 from django.shortcuts import render
 
-from quiz.models import DocumentStatistics
+from quiz.models import DocumentStatistics, Quiz
 from x5quiz.errors import search_failed
 from x5quiz.x5gon import search_documents, get_document, get_document_content, generate_document_questions, \
     get_document_url
@@ -45,7 +45,7 @@ def quiz_view(request, document_id):
     return render(request, "quiz/quiz.html", {
         'document': get_document(document_id),
         'content': get_document_content(document_id),
-        'questions': questions,
+        'quiz': Quiz.objects.get(document_id=document_id),
     })
 
 
