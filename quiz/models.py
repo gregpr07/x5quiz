@@ -14,3 +14,24 @@ class DocumentStatistics(models.Model):
     def increase_views(self):
         self.views = self.views + 1
         self.save()
+
+
+class Quiz(models.Model):
+    document_id = models.IntegerField(unique=True)
+
+    def get_quiz_question(self):
+        return QuizQuestion.objects.get(quiz=self)
+
+
+class QuizQuestion(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
+    question = models.CharField(max_length=255)
+    correct = models.IntegerField(default=0)
+
+    def get_quiz_answers(self):
+        return QuizAnswer.objects.get(question=self)
+
+
+class QuizAnswer(models.Model):
+    question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
+    content = models.CharField(max_length=255)
