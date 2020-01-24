@@ -35,3 +35,25 @@ class QuizQuestion(models.Model):
 class QuizAnswer(models.Model):
     question = models.ForeignKey(QuizQuestion, on_delete=models.CASCADE)
     text = models.CharField(max_length=255)
+
+
+class QuizUserResult(models.Model):
+    correct = models.IntegerField(default=0)
+    wrong = models.IntegerField(default=0)
+    data = models.TextField(max_length=500)
+
+    def get_correct_percentage(self):
+        return (self.correct * 100) / (self.correct + self.wrong)
+
+    def get_wrong_percentage(self):
+        return (self.wrong * 100) / (self.correct + self.wrong)
+
+    def determine_grade(self):
+        correct_percentage = self.get_correct_percentage()
+        if correct_percentage >= 90: return 'A'
+        if correct_percentage >= 90: return 'B'
+        if correct_percentage >= 90: return 'C'
+        if correct_percentage >= 90: return 'D'
+        if correct_percentage >= 90: return 'E'
+        return 'F'
+
