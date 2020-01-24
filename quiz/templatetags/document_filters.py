@@ -11,9 +11,9 @@ def star_rating(document_id, rating):
     j = int(rating)
     for i in range(5):
         if j > 0:
-            buffer = buffer + '<a href="http://localhost:8000/quiz/rate/' + str(document_id) +'/' + str(i+1) + '"><i class="fas fa-star"></i></a>'
+            buffer = buffer + '<span class="transparent"><i class="fas fa-star"></i></span>'
         else:
-            buffer = buffer + '<a href="http://localhost:8000/quiz/rate/' + str(document_id) +'/' + str(i+1) + ' class="transparent"><i class="fas fa-star"></i></a>'
+            buffer = buffer + '<span><i class="fas fa-star"></i></span>'
         j -= 1
 
     return buffer

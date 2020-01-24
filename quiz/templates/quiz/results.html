@@ -8,12 +8,11 @@
         <div class="col-12 col-md-8">
             <div class="card">
                 <div class="card-body">
-                    <h2 class="card-title">Quiz > {{ quiz.document_id }}</h2>
+                    <h2 class="card-title">Quiz > {{ quiz.document_id|document_title }}</h2>
+                    <p>These are the answers:</p>
                     {% for question in quiz.get_quiz_questions %}
-                        TEST: {{ data|char_at:forloop.counter0 }}
-                        Correct: {{ question.correct }}
                         <hr>
-                        <h4 class="card-title {% if data|char_at:forloop.counter0 == question.correct %}green{% else %}red{% endif %}">{{ forloop.counter }}. {{ question.text }}</h4>
+                        <h4 class="card-title">{{ forloop.counter }}. {{ question.text }}</h4>
                         {% for answer in question.get_quiz_answers %}
                             <div class="custom-control custom-radio">
                               <input type="radio" class="custom-control-input" id="{{ forloop.parentloop.counter }}-{{ forloop.counter }}" name="{{ forloop.parentloop.counter }}-{{ forloop.counter }}" disabled {% if question.correct|add:1 == forloop.counter %}checked{% endif %}>
@@ -30,8 +29,8 @@
                 <div class="card-body">
                     <h2 class="card-title">Result</h2>
                     <div class="card-text">
-                        Correct answers: <span class="green">{{ results.correct }}</span> ({{ results.get_correct_percentage }} %)<br>
-                        Wrong answers: <span class="red">{{ results.wrong }}</span> ({{ results.get_wrong_percentage }} %)<br>
+                        Correct answers: <span class="green">{{ results.correct }}</span> ({{ results.get_correct_percentage|floatformat:2 }} %)<br>
+                        Wrong answers: <span class="red">{{ results.wrong }}</span> ({{ results.get_wrong_percentage|floatformat:2 }} %)<br>
                         <hr>
                         Grade: {{ results.determine_grade }}
                     </div>
