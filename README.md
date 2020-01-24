@@ -34,3 +34,5 @@ Spletna stran dogodka: <https://postartup.si/sprint-poste-slovenije-2020/>
 - Kreiranje kvizov z ML in NLP.
 - Localisation, translation.
 
+## Demo (projekt v akciji)
+<https://github.com/duplxey/x5quiz/wiki/Demo-(preview)>
