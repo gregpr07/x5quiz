@@ -1,4 +1,4 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 
 from accounts.models import ProfileStatistics
 from quiz.models import DocumentStatistics, Quiz, QuizUserResult
@@ -87,3 +87,11 @@ def quiz_submit_view(request, quiz_pk):
         'data': buffer[:-1],
         'leaderboard': QuizUserResult.objects.filter(quiz=quiz).order_by("-correct")
     })
+
+
+def rate_view(request, document_id, rating):
+    document_id = int(document_id)
+    s = DocumentStatistics.objects.get(pk=document_id)
+    s.rating = rating
+
+    return redirect("quiz-learn", document_id=document_id)

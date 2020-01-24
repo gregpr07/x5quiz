@@ -16,7 +16,7 @@
             <div class="col-12 col-md-6">
                 <div class="card">
                     <div class="card-body">
-                        <div class="card-title">{{ result.title }} (rel: {{ result.weight }})</div>
+                        <div class="card-title"><b>{{ result.title }}</b> (rel: {{ result.weight|floatformat:2 }})</div>
                         <div class="card-text">
                             {{ result.description|truncatewords:25 }}
                             <hr>

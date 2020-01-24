@@ -60,3 +60,11 @@ def submission_failed(request):
         'message_title': "Submission failed!",
         'message_content': "Did you submit the correct data?"
     })
+
+
+def submission_failed(request):
+    return render(request, 'layout/message.html', {
+        'message_type': "error",
+        'message_title': "Submission failed!",
+        'message_content': "Did you submit the correct data?"
+    })

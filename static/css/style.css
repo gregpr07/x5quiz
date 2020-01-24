@@ -40,3 +40,7 @@ footer {
 .red {
     color: #c0392b;
 }
+
+.transparent {
+    opacity: 0.5;
+}

@@ -24,7 +24,7 @@
                     <h5 class="card-title">Resource information</h5>
                     <div class="card-text">
                         Rating:
-                        {{ statistics.rating|star_rating|safe }}
+                        {{ statistics.rating|star_rating:document.material_id|safe }}
                         <br>
                         Views: {{ statistics.views }}
                         <hr>

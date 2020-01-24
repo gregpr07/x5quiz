@@ -1,16 +1,20 @@
 from django import template
 
 from quiz.models import DocumentStatistics
-from x5quiz.x5gon import get_document
 
 register = template.Library()
 
 
 @register.filter(name='star_rating')
-def star_rating(rating):
+def star_rating(document_id, rating):
     buffer = ""
-    for i in range(int(rating)):
-        buffer = buffer + '<span><i class="fas fa-star"></i></span>'
+    j = int(rating)
+    for i in range(5):
+        if j > 0:
+            buffer = buffer + '<a href="http://localhost:8000/quiz/rate/' + str(document_id) +'/' + str(i+1) + '"><i class="fas fa-star"></i></a>'
+        else:
+            buffer = buffer + '<a href="http://localhost:8000/quiz/rate/' + str(document_id) +'/' + str(i+1) + ' class="transparent"><i class="fas fa-star"></i></a>'
+        j -= 1
 
     return buffer
 
