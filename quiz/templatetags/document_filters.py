@@ -1,5 +1,6 @@
 from django import template
 
+from quiz.models import DocumentStatistics
 from x5quiz.x5gon import get_document
 
 register = template.Library()
@@ -16,7 +17,7 @@ def star_rating(rating):
 
 @register.filter(name='document_title')
 def document_title(document_id):
-    return get_document(document_id)['title']
+    return DocumentStatistics.objects.get(document_id=document_id).title
 
 
 @register.filter(name='char_at')

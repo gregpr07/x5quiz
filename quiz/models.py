@@ -3,6 +3,7 @@ from django.db import models
 
 
 class DocumentStatistics(models.Model):
+    title = models.CharField(default="undefined", blank=True, max_length=255)
     document_id = models.IntegerField(unique=True)
     rating = models.FloatField(default=5)
     raters = models.ManyToManyField(User)
@@ -43,6 +44,7 @@ class QuizAnswer(models.Model):
 class QuizUserResult(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
+    date = models.DateTimeField(auto_now_add=True)
     correct = models.IntegerField(default=0)
     wrong = models.IntegerField(default=0)
     data = models.TextField(max_length=500)

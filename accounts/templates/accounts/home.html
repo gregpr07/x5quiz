@@ -1,5 +1,7 @@
 {% extends "layout/default.html" %}
 
+{% load document_filters %}
+
 {% block content %}
     <div class="row">
         <div class="col-12 col-md-8">
@@ -26,13 +28,15 @@
                             </tr>
                           </thead>
                           <tbody>
-                            <tr>
-                              <th scope="row">%index%</th>
-                              <td >%title%</td>
-                              <td>%correct%</td>
-                              <td>%wrong%</td>
-                              <td>%grade%</td>
-                            </tr>
+                            {% for result in recent %}
+                                <tr>
+                                  <th scope="row">{{ forloop.counter }}</th>
+                                  <td >{{ result.quiz.document_id|document_title }}</td>
+                                  <td>{{ result.correct }}</td>
+                                  <td>{{ result.wrong }}</td>
+                                  <td>{{ result.determine_grade }}</td>
+                                </tr>
+                            {% endfor %}
                           </tbody>
                         </table>
                     </div>

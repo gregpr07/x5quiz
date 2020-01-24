@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+from accounts.models import ProfileStatistics
 from quiz.models import DocumentStatistics, Quiz, QuizUserResult
 from x5quiz.errors import search_failed, submission_failed
 from x5quiz.x5gon import search_documents, get_document, get_document_content, generate_document_questions, \
@@ -25,14 +26,19 @@ def search_view(request):
 def learn_view(request, document_id):
     statistics = None
 
+    document = get_document(document_id)
+
     if not DocumentStatistics.objects.filter(document_id=document_id).exists():
-        statistics = DocumentStatistics.objects.create(document_id=document_id, views=1)
+        statistics = DocumentStatistics.objects.create(document_id=document_id, views=1, title=document["title"])
     else:
         statistics = DocumentStatistics.objects.get(document_id=document_id)
         statistics.increase_views()
 
+    if request.user.is_authenticated:
+        ProfileStatistics.objects.get(user=request.user).increase_documents_read()
+
     return render(request, "quiz/learn.html", {
-        'document': get_document(document_id),
+        'document': document,
         'content': get_document_content(document_id),
         'url': get_document_url(document_id),
         'statistics': statistics,
@@ -70,6 +76,10 @@ def quiz_submit_view(request, quiz_pk):
 
     results = QuizUserResult.objects.create(quiz=quiz, user=request.user, correct=correct, wrong=wrong, data=buffer[:-1])
     results.save()
+
+    stats = ProfileStatistics.objects.get(user=request.user)
+    stats.add_points(correct)
+    stats.increase_quizzes_played()
 
     return render(request, "quiz/results.html", {
         'quiz': quiz,

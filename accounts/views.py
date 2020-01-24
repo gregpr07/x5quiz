@@ -4,6 +4,7 @@ from django.shortcuts import render, redirect
 
 from accounts.forms import LoginForm, SignupForm, SettingsForm
 from accounts.models import Profile, ProfileStatistics
+from quiz.models import QuizUserResult
 from x5quiz.errors import already_authenticated, not_authenticated, unknown_user
 
 
@@ -86,7 +87,7 @@ def home_view(request):
     if not request.user.is_authenticated:
         return not_authenticated(request)
 
-    return render(request, "accounts/home.html", {})
+    return render(request, "accounts/home.html", {'recent': QuizUserResult.objects.filter(user=request.user)})
 
 
 def profile_view(request, username):
@@ -106,7 +107,7 @@ def profile_view(request, username):
 
 def members_view(request):
     return render(request, "accounts/members.html", {
-        'members': User.objects.all().order_by("profilestatistics__points")
+        'members': User.objects.all().order_by("-profilestatistics__points")
     })
 
 

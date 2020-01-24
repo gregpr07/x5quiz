@@ -18,8 +18,16 @@ class ProfileStatistics(models.Model):
     quizzes_played = models.IntegerField(default=0)
     points = models.IntegerField(default=0)
 
-    def add_karma(self, amount):
+    def add_points(self, amount):
         self.points = self.points + amount
+        self.save()
+
+    def increase_documents_read(self):
+        self.documents_read = self.documents_read + 1
+        self.save()
+
+    def increase_quizzes_played(self):
+        self.quizzes_played = self.quizzes_played + 1
         self.save()
 
     def __str__(self):
