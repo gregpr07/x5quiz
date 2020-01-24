@@ -35,4 +35,5 @@ Spletna stran dogodka: <https://postartup.si/sprint-poste-slovenije-2020/>
 - Localisation, translation.
 
 ## Demo (projekt v akciji)
-<https://github.com/duplxey/x5quiz/wiki/Demo-(preview)>
+PPTX: https://drive.google.com/file/d/1lnynzDnLxGxKhSXl8JgUd_G--IXHsI_O/view  
+Demo (slike): <https://github.com/duplxey/x5quiz/wiki/Demo-(preview)>
