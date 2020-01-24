@@ -52,3 +52,11 @@ def search_failed(request):
                           "<li>Query was longer than 16 characters.</li>"
                            "</ul>"
     })
+
+
+def submission_failed(request):
+    return render(request, 'layout/message.html', {
+        'message_type': "error",
+        'message_title': "Submission failed!",
+        'message_content': "Did you submit the correct data?"
+    })

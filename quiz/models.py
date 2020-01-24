@@ -22,6 +22,9 @@ class Quiz(models.Model):
     def get_quiz_questions(self):
         return QuizQuestion.objects.filter(quiz=self)
 
+    def get_quiz_question(self, index):
+        return QuizQuestion.objects.filter(quiz=self)[index]
+
 
 class QuizQuestion(models.Model):
     quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
@@ -38,6 +41,7 @@ class QuizAnswer(models.Model):
 
 
 class QuizUserResult(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     correct = models.IntegerField(default=0)
     wrong = models.IntegerField(default=0)
     data = models.TextField(max_length=500)
@@ -51,9 +55,9 @@ class QuizUserResult(models.Model):
     def determine_grade(self):
         correct_percentage = self.get_correct_percentage()
         if correct_percentage >= 90: return 'A'
-        if correct_percentage >= 90: return 'B'
-        if correct_percentage >= 90: return 'C'
-        if correct_percentage >= 90: return 'D'
-        if correct_percentage >= 90: return 'E'
+        if correct_percentage >= 80: return 'B'
+        if correct_percentage >= 70: return 'C'
+        if correct_percentage >= 60: return 'D'
+        if correct_percentage >= 50: return 'E'
         return 'F'
 
