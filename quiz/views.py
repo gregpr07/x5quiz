@@ -68,14 +68,12 @@ def quiz_submit_view(request, quiz_pk):
 
     wrong = quiz.get_quiz_questions().count() - correct
 
-    results = QuizUserResult.objects.create(user=request.user, correct=correct, wrong=wrong, data=buffer[:-1])
+    results = QuizUserResult.objects.create(quiz=quiz, user=request.user, correct=correct, wrong=wrong, data=buffer[:-1])
     results.save()
 
     return render(request, "quiz/results.html", {
         'quiz': quiz,
         'results': results,
+        'data': buffer[:-1],
+        'leaderboard': QuizUserResult.objects.filter(quiz=quiz).order_by("-correct")
     })
-
-
-def results_view(request):
-    return render(request, "quiz/results.html", {})

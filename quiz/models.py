@@ -41,6 +41,7 @@ class QuizAnswer(models.Model):
 
 
 class QuizUserResult(models.Model):
+    quiz = models.ForeignKey(Quiz, on_delete=models.CASCADE)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     correct = models.IntegerField(default=0)
     wrong = models.IntegerField(default=0)
