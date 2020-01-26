@@ -18,26 +18,26 @@
                     <h2 class="card-title">Your recent quizzes</h2>
                     <div class="card-text">
                         <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th scope="col">#</th>
-                              <th scope="col">Title</th>
-                              <th scope="col">Correct</th>
-                              <th scope="col">Wrong</th>
-                              <th scope="col">Grade</th>
-                            </tr>
-                          </thead>
-                          <tbody>
-                            {% for result in recent %}
+                            <thead>
                                 <tr>
-                                  <th scope="row">{{ forloop.counter }}</th>
-                                  <td >{{ result.quiz.document_id|document_title }}</td>
-                                  <td>{{ result.correct }}</td>
-                                  <td>{{ result.wrong }}</td>
-                                  <td>{{ result.determine_grade }}</td>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Title</th>
+                                    <th scope="col">Correct</th>
+                                    <th scope="col">Wrong</th>
+                                    <th scope="col">Grade</th>
                                 </tr>
-                            {% endfor %}
-                          </tbody>
+                            </thead>
+                            <tbody>
+                                {% for result in recent %}
+                                <tr>
+                                    <th scope="row">{{ forloop.counter }}</th>
+                                    <td>{{ result.quiz.document_id|document_title }}</td>
+                                    <td>{{ result.correct }}</td>
+                                    <td>{{ result.wrong }}</td>
+                                    <td>{{ result.determine_grade }}</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
                         </table>
                     </div>
                 </div>

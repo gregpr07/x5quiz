@@ -1,8 +1,8 @@
-{% extends "layout/default-containerless.html" %}
+{% extends "layout/default.html" %}
 
 {% load static %}
 
-{% block content %}
+{% block containerless %}
     <div class="section" style="background-color: #5D9EDE;color:white;background-image: url('{% static "img/bg1.png" %}');padding: 100px 0;">
         <div class="container">
             <div class="row">
@@ -20,6 +20,12 @@
                 <img src="{% static "img/iitp_logo.png" %}" alt="IITP logo" height="50" style="padding: 0 35px;">
                 <img src="{% static "img/x5gon_logo.png" %}" alt="x5gon logo" height="50" style="padding: 0 35px;">
             </center>
+        </div>
+    </div>
+    <div class="section" style="background-color: #4E545A;color:white;">
+        <div class="container">
+            <h1>x5quiz</h1>
+            <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed quia non numquam eius modi tempora incidunt ut labore et dolore magnam aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in ea voluptate velit esse quam nihil molestiae consequatur, vel illum qui dolorem eum fugiat quo voluptas nulla pariatur?</p>
         </div>
     </div>
     <div class="section">
@@ -51,10 +57,10 @@
             </div>
         </center>
     </div>
-    <div class="section" style="background-color: #5D9EDE;color:white;">
+    <div class="section" style="background-color: #4e545a;color:white;">
         <center>
             <h3>What are you waiting for?</h3>
             <a href="{% url "accounts-signup" %}" class="btn btn-primary">Sign up - it's free!</a>
-        </center>>
+        </center>
     </div>
 {% endblock %}

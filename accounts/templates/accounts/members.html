@@ -7,24 +7,24 @@
         <div class="card-body">
             <h2 class="card-title">Users <small>(filtered by: points)</small></h2>
             <table class="table table-striped">
-              <thead>
-                <tr>
-                  <th scope="col">#</th>
-                  <th scope="col">Username <i class="fas fa-sort"></i></th>
-                  <th scope="col">Points <i class="fas fa-sort"></i></th>
-                  <th scope="col">View profile</th>
-                </tr>
-              </thead>
-              <tbody>
-                {% for member in members %}
+                <thead>
                     <tr>
-                      <th scope="row">{{ forloop.counter }}</th>
-                      <td>{{ member.username }}</td>
-                      <td>{{ member|fetch_points }}</td>
-                      <td><a href="{% url "accounts-profile" username=user.username %}">View profile</a></td>
+                        <th scope="col">#</th>
+                        <th scope="col">Username <i class="fas fa-sort"></i></th>
+                        <th scope="col">Points <i class="fas fa-sort"></i></th>
+                        <th scope="col">View profile</th>
                     </tr>
-                {% endfor %}
-              </tbody>
+                </thead>
+                <tbody>
+                    {% for member in members %}
+                    <tr>
+                        <th scope="row">{{ forloop.counter }}</th>
+                        <td>{{ member.username }}</td>
+                        <td>{{ member|fetch_points }}</td>
+                        <td><a href="{% url " accounts-profile " username=member.username %}">View profile</a></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
             </table>
         </div>
     </div>

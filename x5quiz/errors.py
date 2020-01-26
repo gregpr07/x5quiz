@@ -41,6 +41,14 @@ def unknown_subcategory(request):
     })
 
 
+def unknown_document(request):
+    return render(request, 'layout/message.html', {
+        'message_type': "error",
+        'message_title': "Unknown document!",
+        'message_content': "Could not find the requested document."
+    })
+
+
 def search_failed(request):
     return render(request, 'layout/message.html', {
         'message_type': "error",
@@ -62,9 +70,9 @@ def submission_failed(request):
     })
 
 
-def submission_failed(request):
+def quiz_not_generated_yet(request):
     return render(request, 'layout/message.html', {
         'message_type': "error",
-        'message_title': "Submission failed!",
-        'message_content': "Did you submit the correct data?"
+        'message_title': "Unknown quiz!",
+        'message_content': "Quiz for this resource hasn't been generated yet."
     })

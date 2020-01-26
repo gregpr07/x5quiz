@@ -2,13 +2,8 @@
 
 }
 
-header {
-
-}
-
 ol, ul {
-    margin: 0 10px; /* To remove default bottom margin */
-    padding: 0 10px; /* To remove default left padding */
+    padding: 0 10px;
 }
 
 footer {
@@ -43,4 +38,12 @@ footer {
 
 .transparent {
     opacity: 0.5;
+}
+
+.additional {
+    color: white;
+}
+
+.centered {
+    margin: 5% 25%;
 }

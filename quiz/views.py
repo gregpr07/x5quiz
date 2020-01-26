@@ -2,9 +2,8 @@ from django.shortcuts import render, redirect
 
 from accounts.models import ProfileStatistics
 from quiz.models import DocumentStatistics, Quiz, QuizUserResult
-from x5quiz.errors import search_failed, submission_failed
-from x5quiz.x5gon import search_documents, get_document, get_document_content, generate_document_questions, \
-    get_document_url
+from x5quiz.errors import search_failed, unknown_document, quiz_not_generated_yet
+from x5quiz.x5gon import search_documents, get_document, get_document_content, get_document_url
 
 
 def index_view(request):
@@ -46,7 +45,8 @@ def learn_view(request, document_id):
 
 
 def quiz_view(request, document_id):
-    questions = generate_document_questions(document_id)
+    if not DocumentStatistics.objects.filter(document_id=document_id).exists():
+        return unknown_document(request)
 
     return render(request, "quiz/quiz.html", {
         'document': get_document(document_id),
@@ -56,7 +56,8 @@ def quiz_view(request, document_id):
 
 
 def quiz_submit_view(request, quiz_pk):
-    print(request.POST)
+    if not Quiz.objects.filter(pk=quiz_pk).exists():
+        return quiz_not_generated_yet(request)
 
     quiz = Quiz.objects.get(pk=quiz_pk)
     correct = 0
@@ -65,9 +66,6 @@ def quiz_submit_view(request, quiz_pk):
     for element in request.POST:
         if element == "csrfmiddlewaretoken": continue
         question = quiz.get_quiz_question(int(element[0])-1)
-        print("question.text: " + question.text)
-        print("question.correct: " + str(question.correct))
-        print("passed: ", int(element[2])-1)
         buffer = buffer + str(int(element[2])-1) + "-"
         if question.correct == int(element[2])-1:
             correct = correct + 1
@@ -90,6 +88,9 @@ def quiz_submit_view(request, quiz_pk):
 
 
 def rate_view(request, document_id, rating):
+    if not DocumentStatistics.objects.filter(document_id=document_id).exists():
+        return unknown_document(request)
+
     document_id = int(document_id)
     s = DocumentStatistics.objects.get(pk=document_id)
     s.rating = rating
